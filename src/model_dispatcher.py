@@ -1,0 +1,57 @@
+from lightgbm import LGBMClassifier
+from xgboost import XGBClassifier
+models = {
+    "lightgbm_hyperoptimize": LGBMClassifier(
+        booster='gbtree',
+        objective='binary',
+        learning_rate=0.01,
+        max_depth=7,
+        colsample_bytree=0.42980286499471365,
+        subsample=0.8454274168022649,
+        min_child_samples=88,
+        reg_alpha=0.1858235567627663,
+        reg_lambda=0.13921985944831958,
+        max_bin=219,
+        min_data_per_group=57,
+        bagging_freq=1,
+        cat_smooth=96,
+        cat_l2=17,
+        verbosity=-1,
+        random_state=42,
+        n_estimators=20000
+    ),
+    "lightgbm_hyperoptimize1": LGBMClassifier(
+        booster='gbtree',
+        objective='binary',
+        learning_rate=0.01,
+        max_depth=7,
+        colsample_bytree=0.42980286499471365,
+        subsample=0.8454274168022649,
+        min_child_samples=88,
+        reg_alpha=0.1858235567627663,
+        reg_lambda=0.13921985944831958,
+        max_bin=219,
+        min_data_per_group=57,
+        bagging_freq=1,
+        cat_smooth=96,
+        cat_l2=17,
+        verbosity=-1,
+        random_state=42,
+        n_estimators=750
+    ),
+    "xgb_hyperoptimize": XGBClassifier(
+        objective="binary:logistic",
+        eval_metric = "auc",
+        learning_rate=0.01,
+        reg_lambda=1.1846714844214434,
+        reg_alpha=8.32792754939642e-06,
+        subsample=0.857801706161242,
+        colsample_bytree=0.3706717917334836,        
+        max_depth=5,
+        n_estimators=20000,
+        min_child_weight=52,
+        use_label_encoder=False,
+        verbosity=0,
+    ),
+
+}
