@@ -34,12 +34,14 @@ def preprocess():
     test_df = pd.DataFrame(imputer.fit_transform(test_df))
     test_df.columns = col_test
 
+    ## Robust Scaler 
+    ## https://www.geeksforgeeks.org/standardscaler-minmaxscaler-and-robustscaler-techniques-ml/
     combined_df = pd.concat([train_df.loc[:,cont], test_df.loc[:,cont]], ignore_index=True)
 
     rl = RobustScaler() 
     combined_df = rl.fit_transform(combined_df)
         
-    ## Saving the processed data
+    ## Adding the processed data to original dataframe
     train_df.loc[:,cont] = combined_df[:train_df.shape[0],:]
     test_df.loc[:,cont] = combined_df[train_df.shape[0]:,:] 
 
